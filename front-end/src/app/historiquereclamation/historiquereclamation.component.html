@@ -1,0 +1,48 @@
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Dashboard</h3>
+        </div>
+        <ul class="list-unstyled components">
+            <li [class.active]="router.isActive('/dashboard', true)">
+                <a routerLink="/dashboard">Mes Ruches</a>
+            </li>
+            <br>
+            <li [class.active]="router.isActive('/historique', true)">
+                <a routerLink="/historique">Historique des reclamations</a>
+            </li>
+            <br>
+            <li [class.active]="router.isActive('/ajouterreclamation', true)">
+                <a href="/ajouterreclamation">Ajouter reclamation</a>
+            </li>
+            <li [class.active]="router.isActive('/order', true)">
+                <a href="/order">MyOrders</a>
+            </li>
+            <br>
+            <div class="logout-wrapper">
+                <button class="btn  logout-button" (click)="logout()">Logout</button>
+            </div>
+        </ul>
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light"></nav>
+        <div class="row">
+            <div class="col-md-4" *ngFor="let reclamation of reclamations">
+              <div class="reclamation-card" [ngClass]="{'bg-warning': reclamation.status === 'pending', 'bg-success': reclamation.status === 'resolved', 'bg-danger': reclamation.status === 'rejected'}">
+                <div class="reclamation-subject">Sujet:{{ reclamation.sujet }}</div>
+                <div class="reclamation-description">Description:{{ reclamation.description }}</div>
+                <div class="reclamation-date">Date:{{ reclamation.date | date }}</div>
+                <div class="reclamation-status">Status:{{ reclamation.status}}</div>
+                
+              </div>
+            </div>
+          </div>
+          
+    </div>
+       
+</div>

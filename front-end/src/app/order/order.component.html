@@ -1,0 +1,49 @@
+<div class="wrapper">
+  <!-- Sidebar  -->
+  <nav id="sidebar">
+      <div class="sidebar-header">
+          <h3>Dashboard</h3>
+      </div>
+      <ul class="list-unstyled components">
+          <li [class.active]="router.isActive('/dashboard', true)">
+              <a routerLink="/dashboard">Mes Ruches</a>
+          </li>
+          <br>
+          <li [class.active]="router.isActive('/historique', true)">
+              <a routerLink="/historique">Historique des reclamations</a>
+          </li>
+          <br>
+          <li [class.active]="router.isActive('/ajouterreclamation', true)">
+              <a href="/ajouterreclamation">Ajouter reclamation</a>
+          </li>
+          <li [class.active]="router.isActive('/order', true)">
+            <a href="/order">MyOrders</a>
+        </li>
+          <br>
+          <div class="logout-wrapper">
+              <button class="btn  logout-button" (click)="logout()">Logout</button>
+          </div>
+      </ul>
+
+  </nav>
+
+  <!-- Page Content  -->
+  <div id="content">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light"></nav>
+      <div class="row">
+          <div class="col-md-4" *ngFor="let order of orders">
+            <div class="reclamation-card" [ngClass]="{'bg-warning': order.status === 'pending', 'bg-success': order.status === 'received', 'bg-danger': order.status === 'rejected'}">
+              <div class="reclamation-subject">Libele:{{ order.libele }}</div>
+              <div class="reclamation-adresse">Adresse:{{ order.adresse }}</div>
+              <div class="reclamation-description">Price:{{ order.totalprice }}</div>
+              <div class="reclamation-status">Status:{{ order.status}}</div>
+              
+              
+            </div>
+          </div>
+        </div>
+        
+  </div>
+     
+</div>

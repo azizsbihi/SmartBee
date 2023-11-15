@@ -1,0 +1,49 @@
+<body>
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Dashboard</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li [class.active]="router.isActive('/dashboard', true)">
+                <a routerLink="/dashboard">Mes Ruches</a>
+            </li>
+            <br>
+            <li [class.active]="router.isActive('/historique', true)">
+                <a routerLink="/historique">Historique des reclamations</a>
+            </li>
+            <br>
+            <li [class.active]="router.isActive('/ajouterreclamation', true)">
+                <a href="/ajouterreclamation">Ajouter reclamation</a>
+            </li>
+            <li [class.active]="router.isActive('/order', true)">
+                <a href="/order">MyOrders</a>
+            </li>
+            <br>
+            <div class="logout-wrapper">
+                <button class="btn  logout-button" (click)="logout()">Logout</button>
+            </div>
+            
+        </ul>
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light"></nav>
+        <div class="input-container">
+            <label for="sujet">Sujet:</label>
+            <input type="text" id="sujet" name="sujet" [(ngModel)]="reclamation.sujet" required>
+          </div>
+          <div class="input-container">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" [(ngModel)]="reclamation.description" required></textarea>
+          </div>
+          
+          <button class="btn2" (click)="createReclamation()">Ajouter</button>
+        </div>
+    </div>
+</body>

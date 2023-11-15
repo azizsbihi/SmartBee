@@ -1,0 +1,49 @@
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Dashboard</h3>
+            </div>
+    
+            <ul class="list-unstyled components">
+                <li [class.active]="router.isActive('/admin', true)">
+                    <a routerLink="/admin">Cathalogues</a>
+                </li>
+                <br>
+                <li [class.active]="router.isActive('/reclamationsadmin', true)">
+                    <a routerLink="/reclamationadmin">Les reclamations</a>
+                </li>
+                <br>
+                <li [class.active]="router.isActive('/ajouterproduit', true)">
+                    <a href="/ajouterproduit">Ajouter produit</a>
+                </li>
+                <br>
+                <div class="logout-wrapper">
+                    <button class="btn  logout-button" (click)="logout()">Logout</button>
+                </div>
+            </ul>
+    
+        </nav>
+    
+        <!-- Page Content  -->
+        <div id="content">
+    
+            <nav class="navbar navbar-expand-lg navbar-light bg-light"></nav>
+            <div class="card-deck">
+                <div class="card" *ngFor="let cathalogue of cathalogue" >
+                <img class="card-img-top" [src]="" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title">{{ cathalogue.libele }}</h5>
+                <p class="card-text">Description: {{ cathalogue.description }}</p>
+                <p class="card-text">prix: {{ cathalogue.prix }}</p>
+               
+                
+                </div>
+             </div>
+    </div>
+    
+        </div>
+           
+    </div>
+    
